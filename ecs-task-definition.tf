@@ -32,6 +32,10 @@ resource "aws_ecs_task_definition" "CZ_client" {
         { 
           name  = "UPSTREAM_URIS"
           value = "http://${aws_lb.cz_fruits_alb.dns_name}"
+        },
+        { 
+          name  = "UPSTREAM_URIS"
+          value = "http://${aws_lb.cz_vegetables_alb.dns_name}"
         }
         
       ]
