@@ -12,9 +12,9 @@ resource "aws_ecs_service" "czarfoods_ecs_service" {
   }
 
   network_configuration {
-    subnets         = aws_subnet.czarfoods_private_subnet.*.id
+    subnets          = aws_subnet.czarfoods_private_subnet.*.id
     assign_public_ip = false
-    security_groups = [aws_security_group.czarfoods_client_service_sg.id]
+    security_groups  = [aws_security_group.czarfoods_client_service_sg.id]
   }
 
   tags = {
@@ -40,9 +40,9 @@ resource "aws_ecs_service" "czarfoods_ecs_service_fruits" {
   }
 
   network_configuration {
-    subnets         = aws_subnet.czarfoods_private_subnet.*.id
+    subnets          = aws_subnet.czarfoods_private_subnet.*.id
     assign_public_ip = false
-    security_groups = [aws_security_group.czarfoods_fruits_service_sg.id]
+    security_groups  = [aws_security_group.czarfoods_fruits_service_sg.id]
   }
 
   tags = {
@@ -67,9 +67,9 @@ resource "aws_ecs_service" "czarfoods_ecs_service_vegetables" {
   }
 
   network_configuration {
-    subnets         = aws_subnet.czarfoods_private_subnet.*.id
+    subnets          = aws_subnet.czarfoods_private_subnet.*.id
     assign_public_ip = false
-    security_groups = [aws_security_group.czarfoods_vegetables_service_sg.id]
+    security_groups  = [aws_security_group.czarfoods_vegetables_service_sg.id]
   }
 
   tags = {

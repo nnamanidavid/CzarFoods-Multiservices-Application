@@ -13,11 +13,11 @@ resource "aws_lb" "czarfoods_alb" {
 }
 
 resource "aws_lb_target_group" "czarfoods_tg" {
-  name     = "${var.default_tags["Project"]}-tg"
-  port     = 9090
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.czarfoods_vpc.id
-  target_type = "ip"
+  name                 = "${var.default_tags["Project"]}-tg"
+  port                 = 9090
+  protocol             = "HTTP"
+  vpc_id               = aws_vpc.czarfoods_vpc.id
+  target_type          = "ip"
   deregistration_delay = 30
 
   health_check {
@@ -51,7 +51,7 @@ resource "aws_lb_listener" "czarfoods_listener" {
 #####
 
 resource "aws_lb" "cz_fruits_alb" {
-  name              = "${var.default_tags["Project"]}-fruits"
+  name               = "${var.default_tags["Project"]}-fruits"
   internal           = true
   load_balancer_type = "application"
   security_groups    = [aws_security_group.czarfoods_fruits_lb_sg.id]
@@ -64,11 +64,11 @@ resource "aws_lb" "cz_fruits_alb" {
 }
 
 resource "aws_lb_target_group" "czarfoods_fruits_tg" {
-  name     = "${var.default_tags["Project"]}-fruits-tg"
-  port     = 9090
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.czarfoods_vpc.id
-  target_type = "ip"
+  name                 = "${var.default_tags["Project"]}-fruits-tg"
+  port                 = 9090
+  protocol             = "HTTP"
+  vpc_id               = aws_vpc.czarfoods_vpc.id
+  target_type          = "ip"
   deregistration_delay = 30
 
   health_check {
@@ -105,7 +105,7 @@ resource "aws_lb_listener" "czarfoods_fruits_listener" {
 #####
 
 resource "aws_lb" "cz_vegetables_alb" {
-  name              = "${var.default_tags["Project"]}-vegetables"
+  name               = "${var.default_tags["Project"]}-vegetables"
   internal           = true
   load_balancer_type = "application"
   security_groups    = [aws_security_group.czarfoods_vegetables_lb_sg.id]
@@ -118,11 +118,11 @@ resource "aws_lb" "cz_vegetables_alb" {
 }
 
 resource "aws_lb_target_group" "czarfoods_vegetables_tg" {
-  name     = "${var.default_tags["Project"]}-vegetables-tg"
-  port     = 9090
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.czarfoods_vpc.id
-  target_type = "ip"
+  name                 = "${var.default_tags["Project"]}-vegetables-tg"
+  port                 = 9090
+  protocol             = "HTTP"
+  vpc_id               = aws_vpc.czarfoods_vpc.id
+  target_type          = "ip"
   deregistration_delay = 30
 
   health_check {

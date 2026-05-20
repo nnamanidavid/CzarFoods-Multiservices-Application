@@ -29,11 +29,11 @@ resource "aws_ecs_task_definition" "CZ_client" {
           name  = "MESSAGE"
           value = "hello from czar client"
         },
-        { 
+        {
           name  = "UPSTREAM_URIS"
           value = "http://${aws_lb.cz_fruits_alb.dns_name},http://${aws_lb.cz_vegetables_alb.dns_name}"
         },
-        
+
       ]
     }
 
@@ -80,7 +80,7 @@ resource "aws_ecs_task_definition" "CZ_fruits" {
           value = "hello from czar fruits clients"
         },
         {
-          name = "UPSTREAM_URIS"
+          name  = "UPSTREAM_URIS"
           value = "http://${var.DB_private_ip}:27017"
         }
       ]
@@ -126,7 +126,7 @@ resource "aws_ecs_task_definition" "CZ_vegetables" {
           value = "hello from czar vegetables clients"
         },
         {
-          name = "UPSTREAM_URIS"
+          name  = "UPSTREAM_URIS"
           value = "http://${var.DB_private_ip}:27017"
         }
       ]

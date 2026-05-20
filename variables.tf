@@ -13,10 +13,10 @@ variable "vpc_cidr_block" {
 variable "default_tags" {
   description = "Default tags to apply to all resources."
   type        = map(string)
-  default     = {
+  default = {
     Project     = "CzarFoods"
     Environment = "Test"
-    }
+  }
 }
 
 variable "public_subnet_count" {
@@ -37,18 +37,18 @@ variable "DB_private_ip" {
 }
 
 variable "instance_key_name" {
-  type = string
+  type        = string
   description = "Name of the EC2 key pair to use for SSH access."
 }
 
 variable "database_service_name" {
-  type = string
+  type        = string
   description = "Database service name"
-  default = "database"
+  default     = "database"
 }
 
 variable "database_message" {
-  type = string
+  type        = string
   description = "Database message"
-  default = "Hello from Yuuci's Database"
+  default     = "Hello from Yuuci's Database"
 }
