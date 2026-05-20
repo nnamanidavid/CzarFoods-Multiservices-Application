@@ -78,6 +78,10 @@ resource "aws_ecs_task_definition" "CZ_fruits" {
         {
           name  = "MESSAGE"
           value = "hello from czar fruits clients"
+        },
+        {
+          name = "UPSTREAM_URIS"
+          value = "http://${var.DB_private_ip}:27017"
         }
       ]
     }
@@ -120,6 +124,10 @@ resource "aws_ecs_task_definition" "CZ_vegetables" {
         {
           name  = "MESSAGE"
           value = "hello from czar vegetables clients"
+        },
+        {
+          name = "UPSTREAM_URIS"
+          value = "http://${var.DB_private_ip}:27017"
         }
       ]
     }

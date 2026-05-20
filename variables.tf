@@ -30,3 +30,25 @@ variable "private_subnet_count" {
   type        = number
   default     = 2
 }
+
+variable "DB_private_ip" {
+  type        = string
+  description = "Private IP address for the RDS instance."
+}
+
+variable "instance_key_name" {
+  type = string
+  description = "Name of the EC2 key pair to use for SSH access."
+}
+
+variable "database_service_name" {
+  type = string
+  description = "Database service name"
+  default = "database"
+}
+
+variable "database_message" {
+  type = string
+  description = "Database message"
+  default = "Hello from Yuuci's Database"
+}

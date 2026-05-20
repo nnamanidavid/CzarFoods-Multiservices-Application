@@ -211,3 +211,41 @@ resource "aws_security_group_rule" "czar_vegetables_service_allow_outbound" {
 }
 
 
+#####
+resource "aws_security_group" "database_sg" {
+    name        = "${var.default_tags["Project"]}-database-sg"
+    description = "Security group for Czarfoods database instance"
+    vpc_id      = aws_vpc.czarfoods_vpc.id
+}
+
+
+resource "aws_security_group_rule" "database_allow_vegs_27017" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  security_group_id = aws_security_group.database_sg.id
+  source_security_group_id = aws_security_group.czarfoods_vegetables_service_sg.id
+  description       = "Allow incoming traffic from vegetables ALB into the service container port 9090"
+}
+
+resource "aws_security_group_rule" "database_allow_fruits_27017" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  security_group_id = aws_security_group.database_sg.id
+  source_security_group_id = aws_security_group.czarfoods_fruits_service_sg.id
+  description       = "Allow incoming traffic from fruits service into the database"
+}
+
+
+resource "aws_security_group_rule" "database_allow_outbound" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = -1
+  security_group_id = aws_security_group.database_sg.id
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "Allow outbound traffic from the service"
+}
