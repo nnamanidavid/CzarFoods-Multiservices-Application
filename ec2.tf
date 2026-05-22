@@ -25,8 +25,8 @@ resource "aws_iam_role" "database_ssm_role" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Action    = "sts:AssumeRole"
-      Effect    = "Allow"
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
       Principal = {
         Service = "ec2.amazonaws.com"
       }
@@ -44,3 +44,16 @@ resource "aws_iam_instance_profile" "database_instance_profile" {
   role = aws_iam_role.database_ssm_role.name
 }
 
+
+resource "aws_instance" "czar_bastion" {
+  ami                    = data.aws_ssm_parameter.ubuntu_ami_id.value
+  instance_type          = "t3.micro"
+  vpc_security_group_ids = [aws_security_group.bastion_sg.id]
+  subnet_id              = aws_subnet.czarfoods_public_subnet[1].id
+  key_name               = var.instance_key_name
+
+  tags = {
+    Name = "${var.default_tags["Project"]}-bastion"
+  }
+
+}

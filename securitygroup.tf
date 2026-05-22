@@ -245,7 +245,7 @@ resource "aws_security_group_rule" "database_allow_22" {
   to_port           = 22
   protocol          = "tcp"
   security_group_id = aws_security_group.database_sg.id
-  cidr_blocks       = ["0.0.0.0/0"]
+  source_security_group_id = aws_security_group.bastion_sg.id
   description       = "Allow incoming traffic from fruits service into the database"
 }
 
@@ -255,6 +255,32 @@ resource "aws_security_group_rule" "database_allow_outbound" {
   to_port           = 0
   protocol          = -1
   security_group_id = aws_security_group.database_sg.id
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "Allow outbound traffic from the service"
+}
+
+resource "aws_security_group" "bastion_sg" {
+  name        = "${var.default_tags["Project"]}-bastion-sg"
+  description = "Security group for Czarfoods bastion instance"
+  vpc_id      = aws_vpc.czarfoods_vpc.id
+}
+
+resource "aws_security_group_rule" "bastion_allow" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  security_group_id = aws_security_group.bastion_sg.id
+  cidr_blocks       = ["102.90.102.109/32"]
+  description       = "Allow incoming traffic from my local"
+}
+
+resource "aws_security_group_rule" "bastion_allow_outbound" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = -1
+  security_group_id = aws_security_group.bastion_sg.id
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "Allow outbound traffic from the service"
 }

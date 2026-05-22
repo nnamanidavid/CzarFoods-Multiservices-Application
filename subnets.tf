@@ -1,8 +1,9 @@
 resource "aws_subnet" "czarfoods_public_subnet" {
-  count             = var.public_subnet_count
-  vpc_id            = aws_vpc.czarfoods_vpc.id
-  cidr_block        = cidrsubnet(aws_vpc.czarfoods_vpc.cidr_block, 8, count.index + 4)
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  count                   = var.public_subnet_count
+  vpc_id                  = aws_vpc.czarfoods_vpc.id
+  cidr_block              = cidrsubnet(aws_vpc.czarfoods_vpc.cidr_block, 8, count.index + 4)
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "${var.default_tags["Project"]}-public-subnet-${data.aws_availability_zones.available.names[count.index]}"
