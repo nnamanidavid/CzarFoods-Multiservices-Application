@@ -240,13 +240,13 @@ resource "aws_security_group_rule" "database_allow_fruits_27017" {
 }
 
 resource "aws_security_group_rule" "database_allow_22" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  security_group_id = aws_security_group.database_sg.id
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.database_sg.id
   source_security_group_id = aws_security_group.bastion_sg.id
-  description       = "Allow incoming traffic from fruits service into the database"
+  description              = "Allow incoming traffic from fruits service into the database"
 }
 
 resource "aws_security_group_rule" "database_allow_outbound" {

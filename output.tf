@@ -15,5 +15,5 @@ output "ecs_cluster_name" {
 }
 
 output "database_ip" {
-  value = aws_instance.czarfoods_database.private_ip  
+  value = aws_instance.czarfoods_database.private_ip
 }
