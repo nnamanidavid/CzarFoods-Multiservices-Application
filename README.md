@@ -8,7 +8,7 @@ A fully Terraform-provisioned multiservices application for fruits and vegetable
 ## 📸 Architecture Diagram
 
 <!-- Add your architecture diagram or screenshot below -->
-![Architecture Diagram](./images/aws-consul-ecs-finalized-architecture.png)
+![Architecture Diagram](./images/section-1-architecture.png)
 
 
 
