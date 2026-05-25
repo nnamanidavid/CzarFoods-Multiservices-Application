@@ -271,7 +271,7 @@ resource "aws_security_group_rule" "bastion_allow" {
   to_port           = 22
   protocol          = "tcp"
   security_group_id = aws_security_group.bastion_sg.id
-  cidr_blocks       = ["102.90.102.109/32"]
+  cidr_blocks       = [var.local_ip]
   description       = "Allow incoming traffic from my local"
 }
 

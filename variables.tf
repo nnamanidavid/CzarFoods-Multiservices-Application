@@ -52,3 +52,8 @@ variable "database_message" {
   description = "Database message"
   default     = "Hello from Yuuci's Database"
 }
+
+variable "local_ip" {
+  type = string
+  description = "my local host ip address"
+}
